@@ -4,92 +4,75 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Our Fairytale Love 💖</title>
+<title>Our Love Journey 💖</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
 
 body{
 margin:0;
 font-family:'Poppins',sans-serif;
-background:linear-gradient(135deg,#ffe4f2,#e4f0ff,#f3e6ff);
-overflow:hidden;
+background:linear-gradient(135deg,#ffeaf4,#f1ecff,#eaf6ff);
 display:flex;
 justify-content:center;
 align-items:center;
 height:100vh;
+}
+
+.container{
+background:rgba(255,255,255,0.7);
+backdrop-filter:blur(15px);
+padding:30px;
+border-radius:25px;
+width:90%;
+max-width:360px;
+box-shadow:0 10px 40px rgba(255,150,200,0.25);
 text-align:center;
 }
 
-/* magical sparkles */
-
-.sparkle{
-position:absolute;
-animation:float 8s linear infinite;
-opacity:0.8;
-}
-
-@keyframes float{
-0%{transform:translateY(100vh);}
-100%{transform:translateY(-100vh);}
-}
-
-/* storybook card */
-
-.container{
-background:rgba(255,255,255,0.85);
-backdrop-filter:blur(15px);
-padding:30px;
-border-radius:30px;
-width:90%;
-max-width:350px;
-box-shadow:0 0 40px rgba(255,150,200,0.5);
-}
-
 h1{
-font-family:'Pacifico';
-color:#ff69b4;
+font-family:'Dancing Script';
+color:#ff6fa5;
 }
 
 button{
-padding:10px 18px;
+padding:10px 16px;
 border:none;
-border-radius:15px;
+border-radius:20px;
 background:#ffd6ec;
 cursor:pointer;
-margin:6px;
-transition:0.3s;
+margin-top:10px;
 }
 
-button:hover{
-transform:scale(1.1);
+/* android chat */
+
+.androidChat{
+background:#f5f5f5;
+padding:15px;
+border-radius:20px;
+height:250px;
+overflow-y:auto;
+display:flex;
+flex-direction:column;
+text-align:left;
 }
 
-/* characters */
-
-.character{
-font-size:45px;
-animation:bounce 1.5s infinite;
+.msg{
+padding:10px 14px;
+margin:6px 0;
+border-radius:18px;
+max-width:75%;
 }
 
-@keyframes bounce{
-0%,100%{transform:translateY(0);}
-50%{transform:translateY(-10px);}
+.incoming{
+background:#e0e0e0;
+align-self:flex-start;
 }
 
-/* glowing heart */
-
-.tapHeart{
-font-size:70px;
-cursor:pointer;
-animation:pulse 1.2s infinite;
-}
-
-@keyframes pulse{
-0%{transform:scale(1);}
-50%{transform:scale(1.3);}
-100%{transform:scale(1);}
+.outgoing{
+background:#dcf8c6;
+align-self:flex-end;
 }
 
 .hidden{display:none;}
@@ -99,87 +82,48 @@ animation:pulse 1.2s infinite;
 
 <body>
 
-<script>
-
-/* create magical sparkles */
-
-for(let i=0;i<20;i++){
-let s=document.createElement("div");
-s.className="sparkle";
-s.innerHTML="✨";
-s.style.left=Math.random()*100+"vw";
-s.style.fontSize=(Math.random()*20+10)+"px";
-document.body.appendChild(s);
-}
-
-</script>
-
 <div class="container">
 
-<!-- STORYBOOK INTRO -->
+<!-- START -->
 
 <div id="screen1">
-<h1>Once Upon A Time... ✨</h1>
-<div class="character">👸✨🤴</div>
-<p>A magical love story began...</p>
-<button onclick="next(1)">Open Storybook 📖</button>
+<h1>Our Love Journey 💖</h1>
+<button onclick="next(1)">Start</button>
 </div>
 
-<!-- Q1 -->
+<!-- LOVE CONFESSION -->
 
 <div id="screen2" class="hidden">
-<h1>Princess Question 💌</h1>
-<p>What makes love strong?</p>
+<h1>Before We Begin 💌</h1>
+
+<p>
+I met you back in 9th standard, and somewhere between then and now,
+my heart quietly decided you were always going to be special.
+</p>
+
+<button onclick="startChat()">Continue ✨</button>
+</div>
+
+<!-- ANDROID CHAT MEMORY -->
+
+<div id="screen3" class="hidden">
+
+<h1>Our First Chat 📱</h1>
+
+<div id="chatBox" class="androidChat"></div>
+
+</div>
+
+<!-- QUESTIONS START -->
+
+<div id="screen4" class="hidden">
+<h1>Question 1 🌸</h1>
 
 <button onclick="wrong()">Trust</button>
-<button onclick="correct()">Loyalty 💖</button>
+<button onclick="correct()">Loyalty 💕</button>
 <button onclick="wrong()">Ignoring 😈</button>
 
 <p id="msg"></p>
-</div>
-
-<!-- Q2 Trick -->
-
-<div id="screen3" class="hidden">
-<h1>Royal Date 😈</h1>
-
-<button onclick="q2()">Long Drive</button>
-<button onclick="q2()">Movie Night</button>
-<button onclick="q2()">Sleeping 😴</button>
-
-<p id="msg2"></p>
-</div>
-
-<!-- Q3 Trick -->
-
-<div id="screen4" class="hidden">
-<h1>Love Language 👑</h1>
-
-<button onclick="q3()">Hugs</button>
-<button onclick="q3()">Gifts</button>
-<button onclick="q3()">Words</button>
-
-<p id="msg3"></p>
-</div>
-
-<!-- MAGIC HEART -->
-
-<div id="screen5" class="hidden">
-<h1>Fill The Magic Heart 💖</h1>
-<div class="tapHeart" onclick="tapLove()">💖</div>
-</div>
-
-<!-- FINAL -->
-
-<div id="screen6" class="hidden">
-<h1>Will You Be My Valentine? 💍</h1>
-<button onclick="next(6)">YES 💕</button>
-</div>
-
-<div id="screen7" class="hidden">
-<h1>Happily Ever After 💖</h1>
-<div class="character">👸💖🤴</div>
-<p>The End... or just the beginning? ✨</p>
 </div>
 
 </div>
@@ -191,7 +135,57 @@ document.getElementById("screen"+n).classList.add("hidden");
 document.getElementById("screen"+(n+1)).classList.remove("hidden");
 }
 
-const funny=["Wrong spell 😈","Princess says try again 😂","Magic failed — retry ✨"];
+/* ANDROID CHAT */
+
+function startChat(){
+
+next(2);
+
+const chat=document.getElementById("chatBox");
+
+const messages=[
+
+{ text:"Do you have whatsapp?", type:"incoming" },
+
+{ text:"No", type:"outgoing" },
+
+{ text:"Download whatsapp, I'll send pictures of romu.", type:"incoming" }
+
+];
+
+let i=0;
+
+function show(){
+
+if(i<messages.length){
+
+let div=document.createElement("div");
+div.className="msg "+messages[i].type;
+div.innerText=messages[i].text;
+
+chat.appendChild(div);
+
+chat.scrollTop=chat.scrollHeight;
+
+i++;
+
+setTimeout(show,1500);
+
+}else{
+
+setTimeout(()=>next(3),2000);
+
+}
+
+}
+
+show();
+
+}
+
+/* Q1 */
+
+const funny=["Try again 😈","Nice try 😂","Not this one 😌"];
 
 function wrong(){
 document.getElementById("msg").innerHTML=
@@ -199,30 +193,7 @@ funny[Math.floor(Math.random()*funny.length)];
 }
 
 function correct(){
-document.getElementById("msg").innerHTML="Correct royal answer 👑";
-setTimeout(()=>next(2),800);
-}
-
-let q2count=0;
-function q2(){
-q2count++;
-const replies=["Nice 😌","Romantic 😍","😈 Trick! All were correct!"];
-document.getElementById("msg2").innerHTML=replies[q2count-1];
-if(q2count>=3){setTimeout(()=>next(3),1200);}
-}
-
-let q3count=0;
-function q3(){
-q3count++;
-const replies=["Cute 😌","Lovely 😍","😈 Trick again! All love languages win!"];
-document.getElementById("msg3").innerHTML=replies[q3count-1];
-if(q3count>=3){setTimeout(()=>next(4),1200);}
-}
-
-let taps=0;
-function tapLove(){
-taps++;
-if(taps>=5){next(5);}
+document.getElementById("msg").innerHTML="Correct 😍 Loyalty wins!";
 }
 
 </script>
