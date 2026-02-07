@@ -4,21 +4,17 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Journey To My Heart ❤️</title>
+<title>Our Fairytale Love 💖</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
 
 body{
 margin:0;
-font-family:'Quicksand';
-background:
-radial-gradient(circle at 20% 30%, #ffd6e7 0%, transparent 40%),
-radial-gradient(circle at 80% 20%, #d6f0ff 0%, transparent 40%),
-radial-gradient(circle at 40% 80%, #e6d6ff 0%, transparent 40%),
-radial-gradient(circle at 90% 90%, #ffe6cc 0%, transparent 40%),
-#f8f7ff;
+font-family:'Poppins',sans-serif;
+background:linear-gradient(135deg,#ffe4f2,#e4f0ff,#f3e6ff);
+overflow:hidden;
 display:flex;
 justify-content:center;
 align-items:center;
@@ -26,84 +22,164 @@ height:100vh;
 text-align:center;
 }
 
+/* magical sparkles */
+
+.sparkle{
+position:absolute;
+animation:float 8s linear infinite;
+opacity:0.8;
+}
+
+@keyframes float{
+0%{transform:translateY(100vh);}
+100%{transform:translateY(-100vh);}
+}
+
+/* storybook card */
+
 .container{
-background:rgba(255,255,255,0.6);
+background:rgba(255,255,255,0.85);
 backdrop-filter:blur(15px);
-padding:28px;
-border-radius:22px;
+padding:30px;
+border-radius:30px;
 width:90%;
 max-width:350px;
+box-shadow:0 0 40px rgba(255,150,200,0.5);
+}
+
+h1{
+font-family:'Pacifico';
+color:#ff69b4;
+}
+
+button{
+padding:10px 18px;
+border:none;
+border-radius:15px;
+background:#ffd6ec;
+cursor:pointer;
+margin:6px;
+transition:0.3s;
+}
+
+button:hover{
+transform:scale(1.1);
+}
+
+/* characters */
+
+.character{
+font-size:45px;
+animation:bounce 1.5s infinite;
+}
+
+@keyframes bounce{
+0%,100%{transform:translateY(0);}
+50%{transform:translateY(-10px);}
+}
+
+/* glowing heart */
+
+.tapHeart{
+font-size:70px;
+cursor:pointer;
+animation:pulse 1.2s infinite;
+}
+
+@keyframes pulse{
+0%{transform:scale(1);}
+50%{transform:scale(1.3);}
+100%{transform:scale(1);}
 }
 
 .hidden{display:none;}
-
-.tapHeart{
-font-size:60px;
-cursor:pointer;
-}
 
 </style>
 </head>
 
 <body>
 
+<script>
+
+/* create magical sparkles */
+
+for(let i=0;i<20;i++){
+let s=document.createElement("div");
+s.className="sparkle";
+s.innerHTML="✨";
+s.style.left=Math.random()*100+"vw";
+s.style.fontSize=(Math.random()*20+10)+"px";
+document.body.appendChild(s);
+}
+
+</script>
+
 <div class="container">
 
+<!-- STORYBOOK INTRO -->
+
 <div id="screen1">
-<h1>Journey To My Heart ❤️</h1>
-<button onclick="next(1)">Start</button>
+<h1>Once Upon A Time... ✨</h1>
+<div class="character">👸✨🤴</div>
+<p>A magical love story began...</p>
+<button onclick="next(1)">Open Storybook 📖</button>
 </div>
 
 <!-- Q1 -->
 
 <div id="screen2" class="hidden">
-<h3>What makes love strong?</h3>
+<h1>Princess Question 💌</h1>
+<p>What makes love strong?</p>
 
 <button onclick="wrong()">Trust</button>
-<button onclick="correct()">Loyalty</button>
+<button onclick="correct()">Loyalty 💖</button>
 <button onclick="wrong()">Ignoring 😈</button>
 
 <p id="msg"></p>
 </div>
 
-<!-- Q2 -->
+<!-- Q2 Trick -->
 
 <div id="screen3" class="hidden">
-<h3>Perfect Date?</h3>
+<h1>Royal Date 😈</h1>
 
-<button onclick="q2()">Long Drive🚗</button>
-<button onclick="q2()">Movie Night🎬</button>
+<button onclick="q2()">Long Drive</button>
+<button onclick="q2()">Movie Night</button>
 <button onclick="q2()">Sleeping 😴</button>
 
 <p id="msg2"></p>
 </div>
 
-<!-- Q3 -->
+<!-- Q3 Trick -->
 
 <div id="screen4" class="hidden">
-<h3>Best Love Language?</h3>
+<h1>Love Language 👑</h1>
 
-<button onclick="q3()">Hugs🤗</button>
-<button onclick="q3()">Gifts🎁</button>
-<button onclick="q3()">Words of Affection</button>
+<button onclick="q3()">Hugs</button>
+<button onclick="q3()">Gifts</button>
+<button onclick="q3()">Words</button>
 
 <p id="msg3"></p>
 </div>
 
-<!-- LOVE TAP -->
+<!-- MAGIC HEART -->
 
 <div id="screen5" class="hidden">
-<h3>Tap Heart ❤️</h3>
-<div class="tapHeart" onclick="tapLove()">❤️</div>
+<h1>Fill The Magic Heart 💖</h1>
+<div class="tapHeart" onclick="tapLove()">💖</div>
 </div>
 
+<!-- FINAL -->
+
 <div id="screen6" class="hidden">
-<h1>💍 Will You Be My Valentine?</h1>
-<button onclick="next(6)">YES 💖</button>
+<h1>Will You Be My Valentine? 💍</h1>
+<button onclick="next(6)">YES 💕</button>
 </div>
 
 <div id="screen7" class="hidden">
-<h1>Arpit ❤️ Rupanshi</h1>
+<h1>Happily Ever After 💖</h1>
+<div class="character">👸💖🤴</div>
+<p>The End... or just the beginning? ✨</p>
 </div>
 
 </div>
@@ -115,70 +191,38 @@ document.getElementById("screen"+n).classList.add("hidden");
 document.getElementById("screen"+(n+1)).classList.remove("hidden");
 }
 
-/* Q1 */
+const funny=["Wrong spell 😈","Princess says try again 😂","Magic failed — retry ✨"];
+
+function wrong(){
+document.getElementById("msg").innerHTML=
+funny[Math.floor(Math.random()*funny.length)];
+}
 
 function correct(){
-document.getElementById("msg").innerHTML="Correct 😍";
+document.getElementById("msg").innerHTML="Correct royal answer 👑";
 setTimeout(()=>next(2),800);
 }
 
-function wrong(){
-document.getElementById("msg").innerHTML="Nice try 😈 but not correct!";
-}
-
-/* Q2 TRICK FLOW */
-
 let q2count=0;
-
 function q2(){
-
 q2count++;
-
-const replies=[
-"Hmmm 😏 not bad choice...",
-"Okay okay you have taste 😌",
-"😈 Trick question! ALL answers were correct!"
-];
-
+const replies=["Nice 😌","Romantic 😍","😈 Trick! All were correct!"];
 document.getElementById("msg2").innerHTML=replies[q2count-1];
-
-if(q2count>=3){
-setTimeout(()=>next(3),1500);
+if(q2count>=3){setTimeout(()=>next(3),1200);}
 }
-
-}
-
-/* Q3 TRICK FLOW */
 
 let q3count=0;
-
 function q3(){
-
 q3count++;
-
-const replies=[
-"Interesting choice 😏",
-"Romantic vibes detected 😍",
-"😈 Trick question again! All love languages are perfect!"
-];
-
+const replies=["Cute 😌","Lovely 😍","😈 Trick again! All love languages win!"];
 document.getElementById("msg3").innerHTML=replies[q3count-1];
-
-if(q3count>=3){
-setTimeout(()=>next(4),1500);
+if(q3count>=3){setTimeout(()=>next(4),1200);}
 }
-
-}
-
-/* LOVE TAP */
 
 let taps=0;
-
 function tapLove(){
 taps++;
-if(taps>=5){
-next(5);
-}
+if(taps>=5){next(5);}
 }
 
 </script>
