@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Journey To My Heart ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+
+/* BODY - NEW DREAMY PASTEL BACKGROUND */
+
+body{
+margin:0;
+font-family:'Quicksand', sans-serif;
+
+background:
+radial-gradient(circle at 20% 30%, #ffd6e7 0%, transparent 40%),
+radial-gradient(circle at 80% 20%, #d6f0ff 0%, transparent 40%),
+radial-gradient(circle at 40% 80%, #e6d6ff 0%, transparent 40%),
+radial-gradient(circle at 90% 90%, #ffe6cc 0%, transparent 40%),
+#f8f7ff;
+
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+overflow:hidden;
+text-align:center;
+}
+
+/* GLASS CARD */
+
+.container{
+background:rgba(255,255,255,0.6);
+backdrop-filter:blur(15px);
+padding:28px;
+border-radius:22px;
+box-shadow:0 8px 25px rgba(0,0,0,0.1);
+width:90%;
+max-width:350px;
+position:relative;
+}
+
+h1{
+font-family:'Playfair Display', serif;
+color:#7b6cff;
+}
+
+button{
+padding:10px 16px;
+border:none;
+border-radius:12px;
+margin:6px;
+cursor:pointer;
+font-family:'Quicksand';
+transition:0.3s;
+}
+
+button:hover{
+transform:scale(1.05);
+}
+
+.nextBtn{
+background:#b8c0ff;
+color:white;
+}
+
+.yesBtn{
+background:#ffc6ff;
+color:#444;
+}
+
+.noBtn{
+background:#e0e0e0;
+position:absolute;
+}
+
+.hidden{
+display:none;
+}
+
+/* MAZE */
+
+.maze{
+position:relative;
+height:150px;
+background:#f4f1ff;
+border-radius:15px;
+margin-top:15px;
+}
+
+.boy{
+position:absolute;
+left:10px;
+top:60px;
+font-size:30px;
+transition:0.3s;
+}
+
+.girl{
+position:absolute;
+right:10px;
+top:60px;
+font-size:30px;
+}
+
+/* FLOATING HEARTS */
+
+.heart{
+position:absolute;
+animation:float 5s linear infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(0);opacity:1;}
+100%{transform:translateY(-600px);opacity:0;}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- SCREEN 1 -->
+<div id="screen1">
+<h1>💌 Journey To My Heart</h1>
+<p>Ready for romantic challenges? 😍</p>
+<button class="nextBtn" onclick="next(1)">Start ❤️</button>
+</div>
+
+<!-- QUESTIONS -->
+
+<div id="screen2" class="hidden">
+<h1>🌹 Question 1</h1>
+<p>What makes love strong?</p>
+<button onclick="next(2)">Trust</button>
+<button onclick="next(2)">Loyalty</button>
+<button onclick="next(2)">Us ❤️</button>
+</div>
+
+<div id="screen3" class="hidden">
+<h1>💘 Question 2</h1>
+<p>Ideal date?</p>
+<button onclick="next(3)">Long drive 🚗</button>
+<button onclick="next(3)">Movie night 🎬</button>
+<button onclick="next(3)">Food date 🍫</button>
+</div>
+
+<div id="screen4" class="hidden">
+<h1>😍 Question 3</h1>
+<p>Best love language?</p>
+<button onclick="next(4)">Hugs 🤗</button>
+<button onclick="next(4)">Quality time ⏳</button>
+<button onclick="next(4)">Cute texts 💬</button>
+</div>
+
+<div id="screen5" class="hidden">
+<h1>💕 Question 4</h1>
+<p>Who makes you smile most?</p>
+<button onclick="next(5)">You 😍</button>
+<button onclick="next(5)">Still you ❤️</button>
+<button onclick="next(5)">Always you 💖</button>
+</div>
+
+<div id="screen6" class="hidden">
+<h1>✨ Question 5</h1>
+<p>Ready for next challenge?</p>
+<button class="nextBtn" onclick="next(6)">YES 😈</button>
+</div>
+
+<!-- MAZE GAME -->
+
+<div id="screen7" class="hidden">
+<h1>🧩 Mini Challenge</h1>
+<p>Help the boy reach the girl ❤️</p>
+
+<div class="maze">
+<div class="boy" id="boy">🧑</div>
+<div class="girl">👩</div>
+</div>
+
+<button class="nextBtn" onclick="moveBoy()">Move Forward ➡️</button>
+</div>
+
+<!-- FINAL QUESTION -->
+
+<div id="screen8" class="hidden">
+<h1>💍 Final Question</h1>
+<p>Will you be my Valentine?</p>
+
+<button class="yesBtn" onclick="yes()">YES 💖</button>
+<button class="noBtn" id="noBtn">NO 😭</button>
+
+</div>
+
+<!-- FINAL SCREEN -->
+
+<div id="screen9" class="hidden">
+<h1>YAYYYY ❤️</h1>
+<p>You completed the journey to my heart 😍</p>
+<h2>Happy Valentine's Day 💕</h2>
+</div>
+
+</div>
+
+<script>
+
+function next(num){
+document.getElementById("screen"+num).classList.add("hidden");
+document.getElementById("screen"+(num+1)).classList.remove("hidden");
+}
+
+/* MAZE */
+
+let boyPos=10;
+
+function moveBoy(){
+boyPos+=40;
+document.getElementById("boy").style.left=boyPos+"px";
+
+if(boyPos>=220){
+next(7);
+}
+}
+
+/* MOVING NO BUTTON */
+
+const noBtn=document.getElementById("noBtn");
+
+noBtn.addEventListener("mouseover",()=>{
+let x=Math.random()*200;
+let y=Math.random()*120;
+noBtn.style.left=x+"px";
+noBtn.style.top=y+"px";
+});
+
+/* YES CELEBRATION */
+
+function yes(){
+document.getElementById("screen8").classList.add("hidden");
+document.getElementById("screen9").classList.remove("hidden");
+startHearts();
+}
+
+/* FLOATING HEARTS */
+
+function startHearts(){
+setInterval(()=>{
+let heart=document.createElement("div");
+heart.className="heart";
+heart.innerHTML="❤️";
+heart.style.left=Math.random()*100+"vw";
+heart.style.fontSize=(Math.random()*20+20)+"px";
+document.body.appendChild(heart);
+
+setTimeout(()=>heart.remove(),5000);
+},300);
+}
+
+</script>
+
+</body>
+</html>
